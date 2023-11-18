@@ -28,7 +28,7 @@ while (item.length < i) {
     Bor numbers divisible by both 3 and 5 print "FizzBuzz".
 */
 
-for(let i = 0; i <= 100; i++) {
+for (let i = 0; i <= 100; i++) {
     if (i % 3 === 0 && i % 5 === 0) {
         console.log('FizzBuzz')
     } else if (i % 3 === 0) {
@@ -39,3 +39,40 @@ for(let i = 0; i <= 100; i++) {
         console.log(i)
     }
 }
+
+// Chessboard
+/*
+    Write a program that creates a string that represents an 8x8 grid, using newline
+    characters to separate lines. At each position of the grid there is either a space
+    or a '#' character. The characters should form a chessboard.
+        Passing the string to console.log should show something like this:
+
+         # # # #
+        # # # #
+         # # # #
+        # # # #
+         # # # #
+        # # # #
+         # # # #
+        # # # #
+    
+    When you have a program that generates this pattern, define a binding size = 8 and change the program
+    so that it works for any size, outputting a grid of the given width and height
+*/
+
+str = '# # # #\n # # # #\n# # # #\n # # # #\n# # # #\n # # # #\n# # # #\n # # # #'
+console.log(str)
+let str = ''
+let size = 8
+
+for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+        if ((x + y) % 2 === 0) {
+            str += ' '
+        } else {
+            str += '#'
+        }
+    }
+    str += '\n'
+}
+console.log(str)
