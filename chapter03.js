@@ -31,3 +31,24 @@ function isEven(num) {
         return isEven(num - 2);
     }
 }
+
+// Bean Counting
+/*
+    Write a function countBs that takes a string as its only argument and returns a number that indicates
+    how many uppercase "B" characters there are in the string.
+    Next, write a function called countChar that behaves like countBs, except it takes a second argument
+    that indicates the charactger that is to be counted (rather than counting uppercase "B" characters).
+    Rewrite countBs to make use of this new function.
+*/
+
+function countBs(str) {
+    return countChar(str, "B");
+}
+
+function countChar(str, char) {
+    let count = 0
+    for(let j = 0; j < str.length; j++) {
+        if(str[j] === char) count += 1;
+    }
+    return count;
+}
