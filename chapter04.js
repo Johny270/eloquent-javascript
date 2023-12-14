@@ -72,3 +72,70 @@ function reverseArrayInPlace(arr) {
     // }
     return arr;
 }
+
+// A List
+/*
+    Write a function arrayToList that builds up alist structure like the one shown when given
+    [1, 2, 3] as argument. Also write a listToArray function that produces an array from a list.
+    Then add a helper function prepend, which takes an element and a list and creates a new list that adds
+    the element to the front of the input list, and nth, which takes a list and a number and returns the element
+    at the given position in the list (with zero referring to the first element) or undefined when there is no 
+    such element.
+
+    Also write a recursive version of nth.
+*/
+function arrayToList(arr) {
+    let list = null;
+    for(let i = arr.length - 1; i >= 0; i--) {
+        list = {value: arr[i], rest: list};
+    }
+    return list;
+}
+
+function listToArray(list) {
+    let arr = [];
+    for(let node = list; node; node = node.rest) {
+        arr.push(node.value);
+    }
+    return arr;
+}
+
+function prepend(value, list) {
+    return {value, rest: list};
+}
+
+function nth(list, n) {
+    if(!list) return undefined;
+    else if(n == 0) return list.value;
+    else return nth(list.rest, n - 1);
+}
+
+// Deep Comparison
+/*
+    Write a function deepEqual that takes two values and return true only if
+    they are the same value or are objects with the same properties, where the values
+    or the properties are equal when compared with a recursive call to deeEqual.
+
+    To find out whether values should be compared directly (use the  === operator for that)
+    or have their properties compared, you can use the typeof operator.
+    If it produces object for both values, you should do a deep comparison.
+    But you have to take one silly exception into account: because of a historical
+    accident, typeof null also produces object.
+    The Object.keys function will be useful when you need to go over the properties of objects
+    to compare them.
+*/
+function deepEqual(val1, val2) {
+    if(val1 === val2) return true;
+
+    if(val1 == null || typeof val1 != "object" || val2 == null || typeof val2 != "object") return false;
+
+    let keysVal1 = Object.keys(val1), keysVal2 = Object.keys(val2);
+
+    if(keysVal1.length != keysVal2.length) return false;
+
+    for(let key of keysVal1) {
+        if(!keysVal2.includes(key) || !deepEqual(val1[key], val2[key])) return false;
+    }
+    
+    return true;
+}
