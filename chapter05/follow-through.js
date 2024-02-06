@@ -33,6 +33,7 @@ let rtlScripts = SCRIPTS.filter((s) => s.direction == 'rtl');
 console.log(map(rtlScripts, (s) => s.name));
 
 // Summarizing with Reduce
+    // Reduce combine all the elements in an array into a single value
 function reduce(array, combine, start) {
 	let current = start;
 	for (let element of array) {
